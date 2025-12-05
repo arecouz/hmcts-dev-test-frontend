@@ -1,0 +1,38 @@
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% extends "template.njk" %}
+{% block content %}
+  <h1 class="govuk-heading-xl">Tasks</h1>
+  {% if tasks and tasks.length %}
+    {% set rows = [] %}
+    {% for task in tasks %}
+      {% if task.completed %}
+        {% set statusText = "Completed" %}
+      {% else %}
+        {% set statusText = "To complete" %}
+      {% endif %}
+      {% set row = [
+        { text: task.title },
+        { text: task.dueDate },
+        { text: statusText }
+      ] %}
+      {% set rows = rows.concat([ row ]) %}
+    {% endfor %}
+    {{ govukTable({
+      caption: "Task List",
+      firstCellIsHeader: false,
+      head: [
+        { text: "Title" },
+        { text: "Due Date" },
+        { text: "Status" }
+      ],
+      rows: rows
+    }) }}
+  {% else %}
+    <p class="govuk-body">No tasks found.</p>
+  {% endif %}
+  {{ govukButton({
+  text: "Add a new task", 
+  href: "/tasks/new"
+}) }}
+{% endblock %}

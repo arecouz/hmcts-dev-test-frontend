@@ -1,11 +1,29 @@
-# HMCTS Dev Test Frontend
-This will be the frontend for the brand new HMCTS case management system. As a potential candidate we are leaving
-this in your hands. Please refer to the brief for the complete list of tasks! Complete as much as you can and be
-as creative as you want.
+# HMCTS Dev Test – Frontend
 
-To begin with, you should be able to run this by running:
-1) `yarn install`
-2) `yarn webpack`
-3) `yarn start:dev` or navigate to package.json and run the script manually
+Node.js frontend for creating and viewing tasks.
 
-You can change the structure however you like! 
+- Uses **Yarn** for dependency management
+- Built with **Express** and **Nunjucks** 
+- UI components from **GOV.UK**  
+- Frontend assets bundled with **Webpack**
+
+
+## Build and run:
+```bash
+yarn install
+yarn build      
+yarn start:dev     
+```
+
+Frontend available at http://localhost:3100/ (default port)
+
+
+| Route | Method |
+|-------|--------|
+| `/` (redirects to `/tasks`) | GET |
+| `/tasks` | GET |
+| `/tasks/new` | GET, POST |
+| `/tasks/success` | GET |
+
+
+

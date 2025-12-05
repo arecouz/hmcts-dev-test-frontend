@@ -1,0 +1,23 @@
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% extends "template.njk" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% set panelHtml %}
+<p>
+  <strong>Title:</strong>
+  {{ task.title }}</p>
+<p>
+  {% endset %}
+
+  {% block beforeContent %}
+    {{ govukBackLink({ href: "/tasks", text: "Back" }) }}
+  {% endblock %}
+
+  {% block content %}
+    {{ govukPanel({
+  titleText: "Your task has been created",
+  html: panelHtml
+}) }}
+  {% endblock %}

@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+/* eslint-disable no-console */
 import * as fs from 'fs';
 import * as https from 'https';
 import * as path from 'path';
@@ -10,7 +10,6 @@ let httpsServer: https.Server | null = null;
 // used by shutdownCheck in readinessChecks
 app.locals.shutdown = false;
 
-// TODO: set the right port for your application
 const port: number = parseInt(process.env.PORT || '3100', 10);
 
 if (app.locals.ENV === 'development') {
@@ -38,7 +37,7 @@ function gracefulShutdownHandler(signal: string) {
     console.log('Shutting down application');
     // Close server if it's running
     httpsServer?.close(() => {
-      console.log("HTTPS server closed")
+      console.log('HTTPS server closed');
     });
   }, 4000);
 }
